@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UXF;
 
-public class StartPointState : MonoBehaviour
+// add the UXF namespace     
+using UXF; 
+
+public class StartPointController : MonoBehaviour
 {
-    public Session session;
+    // reference to the UXF Session - so we can start the trial.
+    public Session session; 
+
     // define 3 public variables - we can then assign their color values in the inspector.
     public Color red;
     public Color amber;
@@ -21,32 +25,37 @@ public class StartPointState : MonoBehaviour
         material = GetComponent<MeshRenderer>().material;
     }
 
-    IEnumerator Countdown()
+    IEnumerator Countdown(Collider other)
     {
-        yield return new WaitForSeconds(0.5f);
+        float timePeriod = session.settings.GetFloat("startpoint_period");
+        yield return new WaitForSeconds(timePeriod);
         material.color = green;
-        session.BeginNextTrial();
+        session.BeginNextTrial(); 
+        other.GetComponent<MeshRenderer>().enabled = false;
     }
 
     /// OnTriggerEnter is called when the Collider 'other' enters the trigger.
     void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Cursor" & !session.InTrial)
+        // only do something when we are NOT currently in a trial.
+        if (other.name == "Cursor" & session.hasInitialised & !session.InTrial) // < -- new
         {
-            print("cursor collided with start point");
             material.color = amber;
-            StartCoroutine(Countdown());
+            StartCoroutine(Countdown(other));    
         }
     }
 
     /// OnTriggerExit is called when the Collider 'other' has stopped touching the trigger.
     void OnTriggerExit(Collider other)
-    {
+    {    
         if (other.name == "Cursor")
-        {      
-            print("cursor left start point");
+        {
             StopAllCoroutines();
             material.color = red;
-        }        
+            if (session.CurrentTrial.settings.GetBool("online_feedback"))
+            {
+                other.GetComponent<MeshRenderer>().enabled = true;
+            }
+        }  
     }
 }
