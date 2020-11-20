@@ -2,7 +2,7 @@
 
 This is the repo which follow's Jack Brooks' tutorial for [UXF](http://immersivecognition.com/uxf-tutorial/)
 
-Branch 'master' holds the code base for Parts 1-11
+Branch `master` holds the code base for Parts 1-11
 - in a 3D Unity scene 
 - with 2D settings 
 - for a visuomotor rotation task (including error clamping)
