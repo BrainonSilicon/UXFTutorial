@@ -12,7 +12,7 @@ public class InstructionsController : MonoBehaviour
 
     void Awake()
     {
-        instructions.text = ""; // clear instructions until we start the session
+        instructions.text = "hello test"; // clear instructions until we start the session
     }
 
     // assign to On Session Begin event
