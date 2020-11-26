@@ -7,6 +7,6 @@
     "practice_ntrials": 5,
     "perturbation_ntrials": 100,
     "deadapt_ntrials": 20,
-    "instruction": "Reach for the target. Test."
+    "instruction": "Hello world. This is not a test."
 
 }

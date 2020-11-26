@@ -12,12 +12,12 @@ public class InstructionsController : MonoBehaviour
 
     void Awake()
     {
-        instructions.text = "hello test"; // clear instructions until we start the session
+        instructions.text = ""; // clear instructions until we start the session
     }
 
     // assign to On Session Begin event
     public void Present(Session session)
     {
-        instructions.text = session.settings.GetString("instruction");
+        instructions.text = session.settings.GetString("instruction"); // control this in the .json file
     }
 }
