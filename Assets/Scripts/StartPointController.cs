@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // add the UXF namespace     
-// using UXF; 
+using UXF; 
 
 public class StartPointController : MonoBehaviour
 {
     // reference to the UXF Session - so we can start the trial.
-    // public Session session; 
+    public Session session; 
 
     // define 3 public variables - we can then assign their color values in the inspector.
     public Color red;
@@ -28,8 +28,16 @@ public class StartPointController : MonoBehaviour
     IEnumerator Countdown()
     {
         // part 3 of tutorial 
+        // yield return new WaitForSeconds(2.0f);
+        // material.color = green;
+
+        // part 5 of tutorial 
         yield return new WaitForSeconds(2.0f);
         material.color = green;
+        session.BeginNextTrial();
+
+
+
     //     float timePeriod = session.settings.GetFloat("startpoint_period");
     //     yield return new WaitForSeconds(timePeriod);
     //     material.color = green;
@@ -43,7 +51,7 @@ public class StartPointController : MonoBehaviour
         material.color = amber;
 
         // part 3 of tutorial 
-        if (other.name == "Cursor") // < -- new
+        if (other.name == "Cursor" & !session.InTrial) // < -- new
         {
             material.color = amber;
             StartCoroutine(Countdown());    
@@ -61,7 +69,6 @@ public class StartPointController : MonoBehaviour
     /// OnTriggerExit is called when the Collider 'other' has stopped touching the trigger.
     void OnTriggerExit(Collider other)
     {    
-        material.color = red;
 
         //part 3 of tutorial 
         if (other.name == "Cursor")

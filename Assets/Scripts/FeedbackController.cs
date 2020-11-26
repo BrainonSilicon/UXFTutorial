@@ -18,11 +18,17 @@ public class FeedbackController : MonoBehaviour
     // method to show the feedback. the On Trial End event will pass us the reference to the trial that has just completed
     public void Present(Trial endedTrial)
     {
+
+        // tutorial part 6 
+        string outcome = (string) endedTrial.result["outcome"];
+        float angle = (float) endedTrial.result["angle"];  
+
+
         // get the results for this trial
         // we have to cast to types (using the name of the type in brackets)
-        string outcome = (string) endedTrial.result["outcome"];
-        if (outcome != "hit" & outcome != "miss") return; // early exit, dont do anything
-        float angle = (float) endedTrial.result["angle"];  
+        // string outcome = (string) endedTrial.result["outcome"];
+        // // if (outcome != "hit" & outcome != "miss") return; // early exit, dont do anything
+        // float angle = (float) endedTrial.result["angle"];  
 
 
         // calculate new position of cursor copy by rotating "angle" degrees about the y axis
