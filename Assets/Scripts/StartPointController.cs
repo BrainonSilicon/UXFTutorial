@@ -37,9 +37,10 @@ public class StartPointController : MonoBehaviour
         session.BeginNextTrial();
 
 
+        // part 10 of tutorial
+        float timePeriod = session.settings.GetFloat("startpoint_period");
+        yield return new WaitForSeconds(timePeriod);
 
-    //     float timePeriod = session.settings.GetFloat("startpoint_period");
-    //     yield return new WaitForSeconds(timePeriod);
     //     material.color = green;
     //     session.BeginNextTrial(); 
     //     other.GetComponent<MeshRenderer>().enabled = false;

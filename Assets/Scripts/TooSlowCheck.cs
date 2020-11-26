@@ -18,6 +18,8 @@ public class TooSlowCheck : MonoBehaviour
         StopAllCoroutines();
     }
 
+    // timeout_period is from part 9 and 10 and needs to be added AFTER the .json file
+
     IEnumerator Countdown()
     {   
         float timeoutPeriod = session.CurrentTrial.settings.GetFloat("timeout_period");

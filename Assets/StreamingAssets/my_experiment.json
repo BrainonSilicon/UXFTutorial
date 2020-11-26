@@ -1,4 +1,12 @@
 {
-    "vmr_angle": 20
+    "vmr_angle": 20,
+    "clamped_error": true,
+    "online_feedback": false,
+    "timeout_period": 1.0,
+    "startpoint_period": 1.0,
+    "practice_ntrials": 5,
+    "perturbation_ntrials": 100,
+    "deadapt_ntrials": 20,
+    "instruction": "Reach for the target. Test."
 
 }
