@@ -25,10 +25,10 @@ public class StartPointController : MonoBehaviour
         material = GetComponent<MeshRenderer>().material;
     }
 
-    IEnumerator Countdown(Collider other)
+    IEnumerator Countdown()
     {
         // part 3 of tutorial 
-        yield return new WaitForSeconds(timePeriod);
+        yield return new WaitForSeconds(2.0f);
         material.color = green;
     //     float timePeriod = session.settings.GetFloat("startpoint_period");
     //     yield return new WaitForSeconds(timePeriod);
